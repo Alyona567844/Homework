@@ -10,6 +10,7 @@ class Product with _$Product {
     @Default(0) int id,
     @Default("") String title,
     @Default(0) int stock,
+    @Default("") String brand,
   }) = _Product;
 
   factory Product.fromJson(Map<String, dynamic> json) => _$ProductFromJson(json);

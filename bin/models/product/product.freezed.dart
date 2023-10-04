@@ -23,6 +23,7 @@ mixin _$Product {
   int get id => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
   int get stock => throw _privateConstructorUsedError;
+  String get brand => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -34,7 +35,7 @@ abstract class $ProductCopyWith<$Res> {
   factory $ProductCopyWith(Product value, $Res Function(Product) then) =
       _$ProductCopyWithImpl<$Res, Product>;
   @useResult
-  $Res call({int id, String title, int stock});
+  $Res call({int id, String title, int stock, String brand});
 }
 
 /// @nodoc
@@ -53,6 +54,7 @@ class _$ProductCopyWithImpl<$Res, $Val extends Product>
     Object? id = null,
     Object? title = null,
     Object? stock = null,
+    Object? brand = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -67,6 +69,10 @@ class _$ProductCopyWithImpl<$Res, $Val extends Product>
           ? _value.stock
           : stock // ignore: cast_nullable_to_non_nullable
               as int,
+      brand: null == brand
+          ? _value.brand
+          : brand // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 }
@@ -78,7 +84,7 @@ abstract class _$$ProductImplCopyWith<$Res> implements $ProductCopyWith<$Res> {
       __$$ProductImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int id, String title, int stock});
+  $Res call({int id, String title, int stock, String brand});
 }
 
 /// @nodoc
@@ -95,6 +101,7 @@ class __$$ProductImplCopyWithImpl<$Res>
     Object? id = null,
     Object? title = null,
     Object? stock = null,
+    Object? brand = null,
   }) {
     return _then(_$ProductImpl(
       id: null == id
@@ -109,6 +116,10 @@ class __$$ProductImplCopyWithImpl<$Res>
           ? _value.stock
           : stock // ignore: cast_nullable_to_non_nullable
               as int,
+      brand: null == brand
+          ? _value.brand
+          : brand // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -116,7 +127,8 @@ class __$$ProductImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$ProductImpl implements _Product {
-  _$ProductImpl({this.id = 0, this.title = "", this.stock = 0});
+  _$ProductImpl(
+      {this.id = 0, this.title = "", this.stock = 0, this.brand = ""});
 
   factory _$ProductImpl.fromJson(Map<String, dynamic> json) =>
       _$$ProductImplFromJson(json);
@@ -130,10 +142,13 @@ class _$ProductImpl implements _Product {
   @override
   @JsonKey()
   final int stock;
+  @override
+  @JsonKey()
+  final String brand;
 
   @override
   String toString() {
-    return 'Product(id: $id, title: $title, stock: $stock)';
+    return 'Product(id: $id, title: $title, stock: $stock, brand: $brand)';
   }
 
   @override
@@ -143,12 +158,13 @@ class _$ProductImpl implements _Product {
             other is _$ProductImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.title, title) || other.title == title) &&
-            (identical(other.stock, stock) || other.stock == stock));
+            (identical(other.stock, stock) || other.stock == stock) &&
+            (identical(other.brand, brand) || other.brand == brand));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, title, stock);
+  int get hashCode => Object.hash(runtimeType, id, title, stock, brand);
 
   @JsonKey(ignore: true)
   @override
@@ -165,8 +181,11 @@ class _$ProductImpl implements _Product {
 }
 
 abstract class _Product implements Product {
-  factory _Product({final int id, final String title, final int stock}) =
-      _$ProductImpl;
+  factory _Product(
+      {final int id,
+      final String title,
+      final int stock,
+      final String brand}) = _$ProductImpl;
 
   factory _Product.fromJson(Map<String, dynamic> json) = _$ProductImpl.fromJson;
 
@@ -176,6 +195,8 @@ abstract class _Product implements Product {
   String get title;
   @override
   int get stock;
+  @override
+  String get brand;
   @override
   @JsonKey(ignore: true)
   _$$ProductImplCopyWith<_$ProductImpl> get copyWith =>
